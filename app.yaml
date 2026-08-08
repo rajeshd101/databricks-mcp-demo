@@ -1,0 +1,9 @@
+command:
+  - python
+  - weather_mcp_server.py
+env:
+  - name: MCP_HOST
+    value: "0.0.0.0"
+  - name: MCP_PATH
+    value: "/mcp"
+

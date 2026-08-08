@@ -1,0 +1,15 @@
+name: weather-prediction-agent
+description: Answers weather questions and gives forecast-based travel recommendations.
+external_mcp:
+  display_name: Weather Prediction MCP
+  endpoint: https://weather-prediction-mcp-rajesh-1352785079224954.aws.databricksapps.com/mcp
+  transport: streamable_http
+  tools:
+    - get_current_weather
+    - get_forecast
+    - get_travel_recommendation
+system_prompt_file: system_prompt.md
+deployment_status:
+  mcp_app: deployed
+  mcp_protocol_check: passed
+  agent_bricks_registration: blocked_by_current_databricks_mcp_service_limitation
