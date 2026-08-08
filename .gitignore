@@ -7,5 +7,6 @@ htmlcov/
 .DS_Store
 .env
 .databricks/
+.vscode/
 dist/
 build/

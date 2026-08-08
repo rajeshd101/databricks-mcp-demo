@@ -2,6 +2,15 @@
 
 A Streamable HTTP MCP server backed by Open-Meteo, plus the prompt and registration metadata for a Databricks Agent Bricks weather agent. Open-Meteo requires no signup, API key, or committed secret.
 
+## Submission links
+
+- GitHub: <https://github.com/rajeshd101/databricks-mcp-demo>
+- Databricks App: <https://weather-prediction-mcp-rajesh-1352785079224954.aws.databricksapps.com>
+- Streamable HTTP MCP endpoint: `https://weather-prediction-mcp-rajesh-1352785079224954.aws.databricksapps.com/mcp`
+- Final ZIP: [`evidence/databricks-mcp-demo-submission.zip`](evidence/databricks-mcp-demo-submission.zip)
+- Grader summary: [`SUBMISSION.md`](SUBMISSION.md)
+- Reproducible test guide: [`TESTING.md`](TESTING.md)
+
 ## Architecture
 
 ```text
@@ -97,22 +106,23 @@ https://weather-prediction-mcp-rajesh-1352785079224954.aws.databricksapps.com/mc
 
 The app endpoint is permission-controlled by Databricks Apps. Grant the intended agent/user permission to use the app before testing the MCP connection.
 
-## Agent Bricks configuration
+## Agent Bricks configuration and current limitation
 
-1. Open the deployed MCP App and copy its HTTPS URL.
-2. In the Databricks workspace, register that URL plus `/mcp` as an external MCP using Streamable HTTP.
-3. Verify tool discovery lists exactly:
-   - `get_current_weather`
-   - `get_forecast`
-   - `get_travel_recommendation`
-4. Create a new Agent Bricks agent.
-5. Add the external MCP to the agent and enable the three tools.
-6. Paste [`agent/system_prompt.md`](agent/system_prompt.md) into the system instructions.
-7. Use [`agent/agent_config.yaml`](agent/agent_config.yaml) as the submitted tool-registration record; replace the endpoint placeholder with the deployed URL.
-8. Test the three questions below and capture the tool call plus final response:
-   - What is the current weather in Toronto?
-   - Will it rain in Chicago tomorrow?
-   - Should I bring a jacket or umbrella to Austin tomorrow?
+The agent prompt and intended external-tool configuration are complete in [`agent/system_prompt.md`](agent/system_prompt.md) and [`agent/agent_config.yaml`](agent/agent_config.yaml).
+
+The current workspace now routes external MCP registration through governed Unity Catalog MCP Services. Current Databricks documentation states that registering Databricks Apps as MCP Services is not supported during the Beta. Therefore the assignment's older direct App-to-Agent-Bricks registration flow cannot be completed in this workspace. A short-lived personal bearer token was not saved as a permanent credential workaround.
+
+When Databricks supports App-backed MCP Services, register the deployed `/mcp` URL, enable these three tools, and paste the supplied system prompt into the agent:
+
+- `get_current_weather`
+- `get_forecast`
+- `get_travel_recommendation`
+
+Then capture these three agent conversations:
+
+- What is the current weather in Toronto?
+- Will it rain in Chicago tomorrow?
+- Should I bring a jacket or umbrella to Austin tomorrow?
 
 ## Error behavior
 
@@ -129,6 +139,7 @@ The app endpoint is permission-controlled by Databricks Apps. Grant the intended
 - Authenticated deployed MCP initialization: HTTP 200, MCP protocol `2025-06-18`.
 - Deployed app screenshot: see `evidence/databricks-app-overview.png`.
 - Agent Bricks registration: blocked by the current Databricks MCP Service limitation that Apps cannot be registered as an MCP Service. The assignment's referenced UI flow no longer matches the current workspace UI. Do not use a short-lived user bearer token as a permanent connection credential.
+- GitHub repository: published at <https://github.com/rajeshd101/databricks-mcp-demo>.
 
 ## Files
 
@@ -137,10 +148,14 @@ agent/agent_config.yaml     External MCP tool record
 agent/system_prompt.md      Agent Bricks instructions and guardrails
 app.yaml                   Databricks App process configuration
 evidence/demo_results.md   Three live API demonstrations
+evidence/deployment.md     Deployment and protocol evidence
+evidence/databricks-app-overview.png  Deployment screenshot
 scripts/run_demo.py        Reproducible live demonstration
 tests/                     Adapter and MCP error-boundary tests
 weather_adapter.py         Open-Meteo HTTP/parsing/recommendation layer
 weather_mcp_server.py      Thin FastMCP tool layer
+SUBMISSION.md              Grader-facing submission summary
+TESTING.md                 Local and deployed test procedure
 ```
 
 ## Limitations
