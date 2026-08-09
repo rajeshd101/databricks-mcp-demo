@@ -42,6 +42,9 @@ The recommendation tool applies documented umbrella, jacket, heat, and wind thre
 - `evidence/databricks-app-overview.png`: deployed Databricks App screenshot.
 - `evidence/deployment.md`: deployment and protocol verification.
 - `evidence/demo_results.md`: three live natural-language example questions with tool calls and results.
+- `evidence/agent_bricks_transcript.md`: Agent Bricks conversations, registered MCP tool traces, final answers, and ambiguity guardrail evidence.
+- `evidence/Mcp_tools_screenshot.jpg`: active governed MCP Service with all three tools.
+- `evidence/MCP_conversation_1.jpg`: Supervisor Agent configuration, attached MCP Service, system instructions, current-weather tool trace, and grounded response.
 - `TESTING.md`: reproducible local and deployed testing commands.
 
 ## Acceptance checklist
@@ -55,11 +58,15 @@ The recommendation tool applies documented umbrella, jacket, heat, and wind thre
 - [x] `requirements.txt` and `app.yaml` included.
 - [x] MCP server deployed as its own Databricks App.
 - [x] Agent system prompt and tool configuration included.
+- [x] Agent Bricks supervisor connected to the registered student MCP Service.
+- [x] Agent behavior demonstrated with tool traces and grounded final answers.
 - [x] README contains architecture, setup, tools, testing, and limitations.
 - [x] Three live MCP tool demonstrations included.
 - [x] GitHub repository and Databricks App links included.
-- [ ] Agent Bricks connection and Agent Bricks chat screenshots.
+- [x] Three Agent Bricks weather conversations recorded as copied transcripts.
+- [x] Ambiguous-location guardrail conversation recorded.
+- [x] Agent Bricks MCP registration and conversation screenshots included.
 
-## Agent Bricks platform limitation
+## Agent Bricks registration
 
-The assignment's referenced direct external-MCP workflow no longer matches the current workspace. The current Databricks UI creates governed Unity Catalog MCP Services, while the current Beta documentation states that Databricks Apps cannot be registered as MCP Services. The server and intended agent configuration are complete, but Agent Bricks connection and chat screenshots cannot be produced through the currently supported workspace flow. No short-lived user bearer token was saved as a permanent workaround.
+The deployed MCP is registered as `bootcamp_students.rajesh.weather_prediction_mcp` and connected to `supervisor-agent-2026-08-08-20-02-56`. Copied conversation evidence demonstrates all three tools and the ambiguous-location guardrail. The Chicago transcript includes a relative-date label mismatch; it is retained verbatim and explicitly identified in the evidence file rather than silently corrected.

@@ -31,4 +31,8 @@ Automated verification: 16 tests passed with 77% combined statement coverage acr
 
 ## Agent Bricks registration status
 
-The current workspace UI uses governed Unity Catalog MCP Services. Databricks documentation currently states that registering Databricks Apps as an MCP Service is not supported during the Beta. The assignment's older direct external-MCP registration flow is therefore unavailable in this workspace. The app itself is deployed and MCP-protocol verified; no short-lived bearer token was saved as a permanent solution.
+- MCP Service: `bootcamp_students.rajesh.weather_prediction_mcp`
+- Supervisor agent: `supervisor-agent-2026-08-08-20-02-56`
+- Registration status: completed
+- Tool traces observed for current weather, forecast, and travel recommendation
+- Conversation evidence: `evidence/agent_bricks_transcript.md`

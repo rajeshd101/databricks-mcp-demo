@@ -12,4 +12,7 @@ system_prompt_file: system_prompt.md
 deployment_status:
   mcp_app: deployed
   mcp_protocol_check: passed
-  agent_bricks_registration: blocked_by_current_databricks_mcp_service_limitation
+  agent_bricks_registration: completed
+  mcp_service: bootcamp_students.rajesh.weather_prediction_mcp
+  supervisor_agent: supervisor-agent-2026-08-08-20-02-56
+  conversation_evidence: evidence/agent_bricks_transcript.md

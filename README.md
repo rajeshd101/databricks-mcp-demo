@@ -106,23 +106,27 @@ https://weather-prediction-mcp-rajesh-1352785079224954.aws.databricksapps.com/mc
 
 The app endpoint is permission-controlled by Databricks Apps. Grant the intended agent/user permission to use the app before testing the MCP connection.
 
-## Agent Bricks configuration and current limitation
+## Agent Bricks configuration
 
-The agent prompt and intended external-tool configuration are complete in [`agent/system_prompt.md`](agent/system_prompt.md) and [`agent/agent_config.yaml`](agent/agent_config.yaml).
+The deployed server is registered as the governed Unity Catalog MCP Service:
 
-The current workspace now routes external MCP registration through governed Unity Catalog MCP Services. Current Databricks documentation states that registering Databricks Apps as MCP Services is not supported during the Beta. Therefore the assignment's older direct App-to-Agent-Bricks registration flow cannot be completed in this workspace. A short-lived personal bearer token was not saved as a permanent credential workaround.
+```text
+bootcamp_students.rajesh.weather_prediction_mcp
+```
 
-When Databricks supports App-backed MCP Services, register the deployed `/mcp` URL, enable these three tools, and paste the supplied system prompt into the agent:
+It is connected to Agent Bricks supervisor agent:
+
+```text
+supervisor-agent-2026-08-08-20-02-56
+```
+
+The agent uses these three tools:
 
 - `get_current_weather`
 - `get_forecast`
 - `get_travel_recommendation`
 
-Then capture these three agent conversations:
-
-- What is the current weather in Toronto?
-- Will it rain in Chicago tomorrow?
-- Should I bring a jacket or umbrella to Austin tomorrow?
+Four recorded conversations—including three weather questions and an ambiguous-location guardrail test—are documented in [`evidence/agent_bricks_transcript.md`](evidence/agent_bricks_transcript.md).
 
 ## Error behavior
 
@@ -138,7 +142,11 @@ Then capture these three agent conversations:
 - Databricks App deployment: succeeded as `weather-prediction-mcp-rajesh`.
 - Authenticated deployed MCP initialization: HTTP 200, MCP protocol `2025-06-18`.
 - Deployed app screenshot: see `evidence/databricks-app-overview.png`.
-- Agent Bricks registration: blocked by the current Databricks MCP Service limitation that Apps cannot be registered as an MCP Service. The assignment's referenced UI flow no longer matches the current workspace UI. Do not use a short-lived user bearer token as a permanent connection credential.
+- Active MCP Service and three-tool screenshot: see `evidence/Mcp_tools_screenshot.jpg`.
+- Supervisor configuration, system prompt, MCP attachment, tool trace, and Toronto response screenshot: see `evidence/MCP_conversation_1.jpg`.
+- Agent Bricks registration: completed through `bootcamp_students.rajesh.weather_prediction_mcp`.
+- Agent behavior: three weather conversations and one ambiguity guardrail conversation recorded in `evidence/agent_bricks_transcript.md`.
+- Evidence note: the Chicago conversation proves tool use but contains a “tomorrow” date-label mismatch and should be rerun for the cleanest correctness evidence.
 - GitHub repository: published at <https://github.com/rajeshd101/databricks-mcp-demo>.
 
 ## Files
@@ -150,6 +158,9 @@ app.yaml                   Databricks App process configuration
 evidence/demo_results.md   Three live API demonstrations
 evidence/deployment.md     Deployment and protocol evidence
 evidence/databricks-app-overview.png  Deployment screenshot
+evidence/agent_bricks_transcript.md  Agent conversations and tool traces
+evidence/Mcp_tools_screenshot.jpg  Active MCP Service and enabled tools
+evidence/MCP_conversation_1.jpg  Supervisor configuration and conversation
 scripts/run_demo.py        Reproducible live demonstration
 tests/                     Adapter and MCP error-boundary tests
 weather_adapter.py         Open-Meteo HTTP/parsing/recommendation layer
