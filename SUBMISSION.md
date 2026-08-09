@@ -45,6 +45,7 @@ The recommendation tool applies documented umbrella, jacket, heat, and wind thre
 - `evidence/agent_bricks_transcript.md`: Agent Bricks conversations, registered MCP tool traces, final answers, and ambiguity guardrail evidence.
 - `evidence/Mcp_tools_screenshot.jpg`: active governed MCP Service with all three tools.
 - `evidence/MCP_conversation_1.jpg`: Supervisor Agent configuration, attached MCP Service, system instructions, current-weather tool trace, and grounded response.
+- `evidence/Mcp_conversation_3.jpg`: Chicago forecast plus Austin recommendation and forecast tool traces with final-answer evidence.
 - `TESTING.md`: reproducible local and deployed testing commands.
 
 ## Acceptance checklist
