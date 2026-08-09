@@ -145,6 +145,7 @@ Four recorded conversations—including three weather questions and an ambiguous
 - Active MCP Service and three-tool screenshot: see `evidence/Mcp_tools_screenshot.jpg`.
 - Supervisor configuration, system prompt, MCP attachment, tool trace, and Toronto response screenshot: see `evidence/MCP_conversation_1.jpg`.
 - Chicago forecast and Austin recommendation tool-trace screenshot: see `evidence/Mcp_conversation_3.jpg`.
+- Austin grounded final answer and Springfield ambiguity guardrail screenshot: see `evidence/MCP_conversation_4.jpg`.
 - Agent Bricks registration: completed through `bootcamp_students.rajesh.weather_prediction_mcp`.
 - Agent behavior: three weather conversations and one ambiguity guardrail conversation recorded in `evidence/agent_bricks_transcript.md`.
 - Evidence note: the Chicago conversation proves tool use but contains a “tomorrow” date-label mismatch and should be rerun for the cleanest correctness evidence.
@@ -163,6 +164,7 @@ evidence/agent_bricks_transcript.md  Agent conversations and tool traces
 evidence/Mcp_tools_screenshot.jpg  Active MCP Service and enabled tools
 evidence/MCP_conversation_1.jpg  Supervisor configuration and conversation
 evidence/Mcp_conversation_3.jpg  Forecast and recommendation traces
+evidence/MCP_conversation_4.jpg  Recommendation answer and guardrail
 scripts/run_demo.py        Reproducible live demonstration
 tests/                     Adapter and MCP error-boundary tests
 weather_adapter.py         Open-Meteo HTTP/parsing/recommendation layer

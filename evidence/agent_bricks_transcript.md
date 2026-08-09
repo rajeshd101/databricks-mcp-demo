@@ -154,3 +154,4 @@ No weather tool was called before clarification. This matches the system-prompt 
 - `Mcp_tools_screenshot.jpg` shows `weather_prediction_mcp` active in AI Gateway with `get_current_weather`, `get_forecast`, and `get_travel_recommendation` enabled.
 - `MCP_conversation_1.jpg` shows the Supervisor Agent, attached `bootcamp_students.rajesh.weather_prediction_mcp` service, installed system prompt, current-weather tool trace, and Toronto final answer.
 - `Mcp_conversation_3.jpg` shows the Chicago forecast trace and the Austin recommendation/forecast traces with their answers.
+- `MCP_conversation_4.jpg` shows the grounded Austin recommendation and the Springfield ambiguity clarification without a premature weather-tool call.
